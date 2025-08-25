@@ -1,0 +1,5 @@
+<resources>
+    <color name="green_on">#4CAF50</color>
+    <color name="red_off">#F44336</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>
