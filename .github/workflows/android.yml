@@ -19,7 +19,7 @@ jobs:
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-        git commit -m "fix: make gradlew executable"
+      
 
       - name: Build Release APK
         run: ./gradlew assembleRelease
