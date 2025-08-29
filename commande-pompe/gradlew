@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+DIR="$(cd "$(dirname "$0")" && pwd)"
+JAVA_EXE=java
+$JAVA_EXE -version >/dev/null 2>&1 || { echo "Java is required to run Gradle"; exit 1; }
+if [ ! -f "$DIR/gradle/wrapper/gradle-wrapper.jar" ]; then
+  echo "gradle-wrapper.jar missing; generating wrapper..."
+  wget -q https://services.gradle.org/distributions/gradle-8.2-bin.zip -O "$DIR/gradle-8.2-bin.zip" || exit 1
+  unzip -q "$DIR/gradle-8.2-bin.zip" -d "$DIR" || exit 1
+  "$DIR/gradle-8.2/bin/gradle" wrapper --gradle-version 8.2 || exit 1
+fi
+exec "$JAVA_EXE" -jar "$DIR/gradle/wrapper/gradle-wrapper.jar" "$@"
